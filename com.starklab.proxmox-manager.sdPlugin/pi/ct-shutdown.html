@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>CT Shutdown</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div id="cascading"></div>
+	<div class="divider"></div>
+	<div class="hint warn">Long press required. Gracefully shuts down the container.</div>
+
+	<script src="sdpi.js"></script>
+	<script src="cascading-selector.js"></script>
+	<script src="server-manager.js"></script>
+	<script>
+		sdpi.ready((ctx) => {
+			window.installServerManager(ctx);
+			const sel = createCascadingSelector({ ctx, root: document.getElementById('cascading'), levels: ['server', 'node', 'ct'] });
+			sel.onChange((v) => ctx.saveSettings({ serverId: v.serverId, node: v.node, vmid: v.vmid, label: v.label }));
+		});
+	</script>
+</body>
+</html>

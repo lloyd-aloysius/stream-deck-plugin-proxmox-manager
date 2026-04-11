@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Server Stats</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div id="cascading"></div>
+	<div class="row">
+		<label>Parameter</label>
+		<select id="parameter">
+			<option value="cpu">CPU usage</option>
+			<option value="ram">RAM usage</option>
+			<option value="storage">Storage usage</option>
+			<option value="uptime">Uptime</option>
+			<option value="nodes">Node count</option>
+		</select>
+	</div>
+
+	<script src="sdpi.js"></script>
+	<script src="cascading-selector.js"></script>
+	<script src="server-manager.js"></script>
+	<script>
+		sdpi.ready((ctx) => {
+			window.installServerManager(ctx);
+			const sel = createCascadingSelector({ ctx, root: document.getElementById('cascading'), levels: ['server'] });
+			const paramEl = document.getElementById('parameter');
+			paramEl.value = ctx.settings.parameter ?? 'cpu';
+			sel.onChange((value) => ctx.saveSettings({ serverId: value.serverId, parameter: paramEl.value }));
+			paramEl.addEventListener('change', () => ctx.saveSettings({ parameter: paramEl.value }));
+		});
+	</script>
+</body>
+</html>

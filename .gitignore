@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+bin/
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment and Secrets
+.env
+.env.local
+.env.*.local
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# Tooling
+.claude/
+.vscode/
+
+# Internal docs
+CLAUDE.md
+SPEC.md

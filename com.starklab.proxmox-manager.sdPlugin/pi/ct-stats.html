@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>CT Stats</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div id="cascading"></div>
+	<div class="row">
+		<label>Parameter</label>
+		<select id="parameter">
+			<option value="cpu">CPU usage</option>
+			<option value="ram">RAM usage</option>
+			<option value="disk">Disk usage</option>
+			<option value="disk-read">Disk read rate</option>
+			<option value="disk-write">Disk write rate</option>
+			<option value="net-in">Network in</option>
+			<option value="net-out">Network out</option>
+			<option value="uptime">Uptime</option>
+		</select>
+	</div>
+
+	<script src="sdpi.js"></script>
+	<script src="cascading-selector.js"></script>
+	<script src="server-manager.js"></script>
+	<script>
+		sdpi.ready((ctx) => {
+			window.installServerManager(ctx);
+			const sel = createCascadingSelector({ ctx, root: document.getElementById('cascading'), levels: ['server', 'node', 'ct'] });
+			const paramEl = document.getElementById('parameter');
+			paramEl.value = ctx.settings.parameter ?? 'cpu';
+			sel.onChange((v) => ctx.saveSettings({ serverId: v.serverId, node: v.node, vmid: v.vmid, label: v.label, parameter: paramEl.value }));
+			paramEl.addEventListener('change', () => ctx.saveSettings({ parameter: paramEl.value }));
+		});
+	</script>
+</body>
+</html>

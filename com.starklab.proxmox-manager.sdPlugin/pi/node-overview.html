@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Node Overview</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div id="cascading"></div>
+	<div class="divider"></div>
+	<div class="hint">Opens a folder with this node's VMs and containers.</div>
+
+	<script src="sdpi.js"></script>
+	<script src="cascading-selector.js"></script>
+	<script src="server-manager.js"></script>
+	<script>
+		sdpi.ready((ctx) => {
+			window.installServerManager(ctx);
+			const sel = createCascadingSelector({ ctx, root: document.getElementById('cascading'), levels: ['server', 'node'] });
+			sel.onChange((value) => ctx.saveSettings({ serverId: value.serverId, node: value.node }));
+		});
+	</script>
+</body>
+</html>

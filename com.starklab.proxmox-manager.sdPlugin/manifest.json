@@ -1,0 +1,169 @@
+{
+	"Name": "Proxmox Manager",
+	"Version": "1.0.0.0",
+	"Author": "Lloyd",
+	"Description": "Monitor Proxmox VE servers and control VMs and containers from your Stream Deck. Real-time status, resource gauges, and lifecycle actions.",
+	"Category": "Proxmox Manager",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"Icon": "imgs/plugin/plugin-icon",
+	"CodePath": "bin/plugin.js",
+	"UUID": "com.starklab.proxmox-manager",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.5"
+	},
+	"OS": [
+		{ "Platform": "mac", "MinimumVersion": "12" },
+		{ "Platform": "windows", "MinimumVersion": "10" }
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"Actions": [
+		{
+			"Name": "Server Overview",
+			"UUID": "com.starklab.proxmox-manager.server-overview",
+			"Tooltip": "Opens a folder showing the status of a Proxmox server.",
+			"Icon": "imgs/actions/server-overview/icon",
+			"PropertyInspectorPath": "pi/server-overview.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/server-overview/key" }]
+		},
+		{
+			"Name": "Server Stats",
+			"UUID": "com.starklab.proxmox-manager.server-stats",
+			"Tooltip": "Shows a resource gauge for a Proxmox server.",
+			"Icon": "imgs/actions/server-stats/icon",
+			"PropertyInspectorPath": "pi/server-stats.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/server-stats/key" }]
+		},
+		{
+			"Name": "Node Overview",
+			"UUID": "com.starklab.proxmox-manager.node-overview",
+			"Tooltip": "Opens a folder showing the status of a Proxmox node.",
+			"Icon": "imgs/actions/node-overview/icon",
+			"PropertyInspectorPath": "pi/node-overview.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/node-overview/key" }]
+		},
+		{
+			"Name": "Node Stats",
+			"UUID": "com.starklab.proxmox-manager.node-stats",
+			"Tooltip": "Shows a resource gauge for a Proxmox node.",
+			"Icon": "imgs/actions/node-stats/icon",
+			"PropertyInspectorPath": "pi/node-stats.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/node-stats/key" }]
+		},
+		{
+			"Name": "VM Overview",
+			"UUID": "com.starklab.proxmox-manager.vm-overview",
+			"Tooltip": "Opens a folder showing the status of a VM.",
+			"Icon": "imgs/actions/vm-overview/icon",
+			"PropertyInspectorPath": "pi/vm-overview.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/vm-overview/key" }]
+		},
+		{
+			"Name": "VM Stats",
+			"UUID": "com.starklab.proxmox-manager.vm-stats",
+			"Tooltip": "Shows a resource gauge for a VM.",
+			"Icon": "imgs/actions/vm-stats/icon",
+			"PropertyInspectorPath": "pi/vm-stats.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/vm-stats/key" }]
+		},
+		{
+			"Name": "VM Start",
+			"UUID": "com.starklab.proxmox-manager.vm-start",
+			"Tooltip": "Start a VM. Standard press.",
+			"Icon": "imgs/actions/vm-start/icon",
+			"PropertyInspectorPath": "pi/vm-start.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/vm-start/key" }]
+		},
+		{
+			"Name": "VM Shutdown",
+			"UUID": "com.starklab.proxmox-manager.vm-shutdown",
+			"Tooltip": "Gracefully shutdown a VM. Long press required.",
+			"Icon": "imgs/actions/vm-shutdown/icon",
+			"PropertyInspectorPath": "pi/vm-shutdown.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/vm-shutdown/key" }]
+		},
+		{
+			"Name": "VM Force Stop",
+			"UUID": "com.starklab.proxmox-manager.vm-force-stop",
+			"Tooltip": "Force stop a VM. Long press required.",
+			"Icon": "imgs/actions/vm-force-stop/icon",
+			"PropertyInspectorPath": "pi/vm-force-stop.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/vm-force-stop/key" }]
+		},
+		{
+			"Name": "VM Reboot",
+			"UUID": "com.starklab.proxmox-manager.vm-reboot",
+			"Tooltip": "Reboot a VM. Long press required.",
+			"Icon": "imgs/actions/vm-reboot/icon",
+			"PropertyInspectorPath": "pi/vm-reboot.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/vm-reboot/key" }]
+		},
+		{
+			"Name": "CT Overview",
+			"UUID": "com.starklab.proxmox-manager.ct-overview",
+			"Tooltip": "Opens a folder showing the status of a container.",
+			"Icon": "imgs/actions/ct-overview/icon",
+			"PropertyInspectorPath": "pi/ct-overview.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/ct-overview/key" }]
+		},
+		{
+			"Name": "CT Stats",
+			"UUID": "com.starklab.proxmox-manager.ct-stats",
+			"Tooltip": "Shows a resource gauge for a container.",
+			"Icon": "imgs/actions/ct-stats/icon",
+			"PropertyInspectorPath": "pi/ct-stats.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/ct-stats/key" }]
+		},
+		{
+			"Name": "CT Start",
+			"UUID": "com.starklab.proxmox-manager.ct-start",
+			"Tooltip": "Start a container. Standard press.",
+			"Icon": "imgs/actions/ct-start/icon",
+			"PropertyInspectorPath": "pi/ct-start.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/ct-start/key" }]
+		},
+		{
+			"Name": "CT Shutdown",
+			"UUID": "com.starklab.proxmox-manager.ct-shutdown",
+			"Tooltip": "Gracefully shutdown a container. Long press required.",
+			"Icon": "imgs/actions/ct-shutdown/icon",
+			"PropertyInspectorPath": "pi/ct-shutdown.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/ct-shutdown/key" }]
+		},
+		{
+			"Name": "CT Force Stop",
+			"UUID": "com.starklab.proxmox-manager.ct-force-stop",
+			"Tooltip": "Force stop a container. Long press required.",
+			"Icon": "imgs/actions/ct-force-stop/icon",
+			"PropertyInspectorPath": "pi/ct-force-stop.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/ct-force-stop/key" }]
+		},
+		{
+			"Name": "CT Reboot",
+			"UUID": "com.starklab.proxmox-manager.ct-reboot",
+			"Tooltip": "Reboot a container. Long press required.",
+			"Icon": "imgs/actions/ct-reboot/icon",
+			"PropertyInspectorPath": "pi/ct-reboot.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/ct-reboot/key" }]
+		}
+	]
+}
