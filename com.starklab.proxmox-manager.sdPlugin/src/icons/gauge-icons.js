@@ -44,8 +44,7 @@ export function buildPercentGauge({ pct, label, frame }) {
 	const colour = gaugeColour(clamped);
 	return wrap(
 		gaugeArc({ pct: clamped, fillColour: colour }) +
-		centredText({ text: `${clamped}`, y: 72, fontSize: 44, fill: COLOUR_TEXT }) +
-		centredText({ text: '%', x: CENTRE + 30, y: 60, fontSize: 18, fill: COLOUR_TEXT }) +
+		centredText({ text: `${clamped}%`, y: 72, fontSize: 38, fill: COLOUR_TEXT }) +
 		(label ? marqueeBand({ text: label, y: 108, fontSize: 18, weight: 600, frame }) : '')
 	);
 }

@@ -311,7 +311,10 @@ export class GuestLifecycleAction extends BaseSingletonAction {
 			serverId,
 			endpointFor(this.kind, serverId, node, vmid),
 			(result) => {
-				entry.latestStatus = result.data?.status;
+				// Only overwrite latestStatus when we have fresh data — preserve
+				// the last known status on transient errors so the button stays
+				// actionable rather than silently disabling.
+				if (result.data?.status) entry.latestStatus = result.data.status;
 				this.#updateMarquee(entry);
 				this.#render(ev.action, entry, entry.marquee.current());
 			}
@@ -341,7 +344,10 @@ export class GuestLifecycleAction extends BaseSingletonAction {
 
 	async #invoke(action, entry) {
 		const state = vmStateFromStatus(entry.latestStatus);
-		if (!this.readyStates.has(state)) return;
+		if (!this.readyStates.has(state)) {
+			streamDeck.logger.info(`[${this.topText}] blocked — current state '${state}' not in readyStates [${[...this.readyStates].join(',')}] (latestStatus=${entry.latestStatus})`);
+			return;
+		}
 
 		// Optimistic overlay — show working immediately.
 		entry.overlayState = 'working';

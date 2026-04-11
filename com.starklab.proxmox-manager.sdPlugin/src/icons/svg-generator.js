@@ -113,7 +113,7 @@ export function bottomLabel(text, { colour = COLOUR_TEXT, fontSize = 18, frame }
 
 /** Label at the top of the tile. */
 export function topLabel(text, { colour = COLOUR_TEXT, fontSize = 16, frame } = {}) {
-	return marqueeBand({ text, y: 14, fontSize, fill: colour, weight: 600, frame });
+	return marqueeBand({ text, y: 20, fontSize, fill: colour, weight: 600, frame });
 }
 
 // ---- marquee ---------------------------------------------------------------
